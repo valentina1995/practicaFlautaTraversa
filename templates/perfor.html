@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+<!doctype html>
+
+
+{% block head%}
+Put your approval of your training
+{% endblock %}
+
+{% block content %}
+	<!-- Formulario para subir audio al servidor -->
+ 			<header class="align-center">
+				   <h3>Upload your exercise in .wav format and its respective score in .mid format</h3>
+			    
+            	
+				<form method="POST" enctype="multipart/form-data">
+
+					<div class="field">
+						<label for="upload-wav">Upload wav file</label>
+						<input type="file" name="audio"  id="upload-wav">
+						<label for="upload-mid">Upload MIDI file</label>
+						<input type="file" name="midi" id="upload-mid">
+					</div>
+					<input type="submit" value="Send" >
+					                   </form>
+                                                                                                                                																										</div>					
+			</header>
+				</div>
+				<!--
+					<div class="image round left">
+						<img src="images/pic01.jpg" alt="Pic 01" />
+					</div>
+						<p>párrafo</p>
+					<div class="image round right">
+						<img src="images/pic02.jpg" alt="Pic 02" />
+					</div>
+					  <p>párrafo</p>
+				</div>
+				</div>
+			</section>
+		-->
+	{% endblock %}
+																				
+</html>

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+<!doctype html>
+
+{% block head%}
+Overall performance
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="row">
+    <div class="4u 12u$(medium) align-center">
+        <h2 style="font-size: 4em; margin-bottom: 0em;">
+            {{wr_note}}
+        </h2>
+        <hr>
+        <h3>
+            Note failures
+        </h3>
+    </div>
+    <div class="4u 12u$(medium) align-center ">
+        <h2 style="font-size: 4em;margin-bottom: 0em">
+            {{wr_time}}
+        </h2>
+        <hr>
+        <h3>
+            Figure failures
+        </h3>
+    </div>
+    <div class="4u 12u$(medium) align-center">
+        <h2 style="font-size: 4em; margin-bottom: 0em">
+            {{overall}}%
+        </h2>
+        <hr>
+        <h3>
+            Overall
+        </h3>
+    </div>
+</div>
+
+<hr class="major" />
+
+
+    <header>
+        <h2 id="content">Detailed report</h2>
+        <p>Below you will find information about the pitch and duration of each note.</p>
+    </header>
+
+<div class="row 200%">
+    <div class="6u 12u$(medium)">
+        <div style="height: 500px; overflow-y:scroll; overflow-x: hidden;">
+        <table class="table-wrapper" >
+            
+            <thead>
+                <tr>
+                    <th scope="col">Note</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Figure</th>
+                    <th scope="col">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in grade %}
+                <tr>
+                    <td>{{row['note']}}</td>
+                    {% if row['intonation'] == 1 %}
+                    <td bgcolor="#6FBF8B">{{row['intonation']}}</td>
+                    {% elif row['intonation'] == 0.5 %}
+                    <td bgcolor="#D9D75B"> The tone of this note is <strong>high</strong></td>
+                    {% elif row['intonation'] == -0.5 %}
+                    <td bgcolor="#D9D75B"> The tone of this note is <strong>low</strong></td>
+                    {%else %}
+                    <td bgcolor="#DB6241">{{row['intonation']}}</td>
+                    {%endif%}
+
+                    {% if row['figure'] == 'Crotchet' %}
+                    <td><img src="static/images/negra.png"></img></td>
+                    {% elif row['figure'] == 'Minim' %}
+                    <td><img src="static/images/blanca.png"></img></td>
+                    {% elif row['figure'] == 'Quaver' %}
+                    <td><img src="static/images/corchea.png"></img></td>
+                    {% elif row['figure'] == 'Semibreve' %}
+                    <td><img src="static/images/redonda.png"></img></td>
+                    {% elif row['figure'] == 'Dotted crotchet' %}
+                    <td><img src="static/images/negra con puntillo.png"></img></td>
+                    {% elif row['figure'] == 'Dotted minim' %}
+                    <td><img src="static/images/blanca con puntillo.png"></img></td>
+                    {%endif%}
+                    {% if row['rythim'] == 1 %}
+                    <td bgcolor="#6FBF8B">{{row['rythim']}}</td>
+                    {% elif row['rythim'] == 0.5 %}
+                    <td bgcolor="#D9D75B">{{row['rythim']}}</td>
+                    {%else %}
+                    <td bgcolor="#DB6241">{{row['rythim']}}</td>
+                    {%endif%}
+
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    </div>
+    </div>
+    <div class="6u$ 12u$(medium)">
+        <br>
+        <table class="table-wrapper">
+            <thead class="align-center">
+                <tr>
+                    <td></td>
+                    <td>
+                        <h2>Conventions</h2>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td bgcolor="#6FBF8B" style="color:rgb(48, 47, 47);"> You got it right </td>
+                    <td bgcolor="#D9D75B" style="color:rgb(48, 47, 47);"> You were very close to achieving it</td>
+                    <td bgcolor="#DB6241" style="color:rgb(48, 47, 47);"> You missed  </td>
+
+                </tr>
+            </tbody>
+
+        </table>
+        <br><br>
+        <blockquote>
+            The flute is a wind instrument and the most sensitive to tuning as it has the mouthpiece outside the mouth (compared to other woodwind instruments).
+            Posture must be stable and safe. 
+            <br>
+            A trick to <strong>improve the tuning</strong> in the performance is: When you feel or see in the tuner that the note is low you can correct it
+       by placing the embouchure "down" as much as you feel or see the pitch improve; otherwise, when the pitch is higher, you move the embouchure "out" of your mouth to correct it.
+        </blockquote>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+</html>
