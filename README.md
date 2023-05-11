@@ -51,3 +51,5 @@ $ NODE_ENV=production node app
 
 Want to contribute? Great!
 
+The proyect was published in IEEE magazine, you can view on : https://ieeexplore.ieee.org/document/9611179
+
